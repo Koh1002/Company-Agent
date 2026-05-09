@@ -105,10 +105,9 @@ export function HomeClient({ agents }: { agents: AgentMetadata[] }) {
 
       <footer className="mt-10 border-t border-[var(--color-border)] pt-6 text-[11px] leading-relaxed text-[var(--color-fg-muted)] sm:mt-16 sm:text-xs">
         <p>
-          後続のエージェント候補: 詳細需要計画 / 自動補充発注 / サプライヤースコアリング /
-          棚割り提案 / クレームトリアージ / 契約書レビュー / 議事録生成 / 競合価格モニタリング
-          / 倉庫 KPI 対話 / 新商品コンセプト / 出荷遅延原因分析 / 採用スクリーニング /
-          経費仕訳 / 営業日報生成 — registry に追加するだけで増やせます。
+          後続のエージェント候補 (未実装): クレームトリアージ / 出荷遅延原因分析 /
+          経費仕訳・経費精算 / 営業日報生成 / 新商品コンセプト生成 / 与信調査 /
+          配送計画・配車 / SNS 投稿生成 / カタログ自動生成 — registry に追加するだけで増やせます。
         </p>
       </footer>
     </div>
