@@ -3,7 +3,7 @@ import { getAgent } from "@/lib/agents/registry";
 import { CredentialError, resolveModel } from "@/lib/provider";
 
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 export async function POST(
   req: Request,
@@ -38,7 +38,7 @@ export async function POST(
     system: agent.systemPrompt,
     tools: agent.tools,
     messages: convertToModelMessages(body.messages),
-    stopWhen: stepCountIs(8),
+    stopWhen: stepCountIs(agent.maxSteps ?? 8),
   });
 
   return result.toUIMessageStreamResponse();

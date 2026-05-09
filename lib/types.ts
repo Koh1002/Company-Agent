@@ -27,4 +27,5 @@ export type AgentDef = {
   systemPrompt: string;
   tools: Record<string, Tool>;
   samplePrompts: string[];
+  maxSteps?: number;
 };

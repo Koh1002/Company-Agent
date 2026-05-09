@@ -12,6 +12,8 @@ import { meetingMinutesAgent } from "./meeting-minutes";
 import { competitorPricingAgent } from "./competitor-pricing";
 import { warehouseKpiAgent } from "./warehouse-kpi";
 import { recruitingScreeningAgent } from "./recruiting-screening";
+import { retailDataAnalysisAgent } from "./retail-data-analysis";
+import { dataScientistAgent } from "./data-scientist";
 
 const all: AgentDef[] = [
   ecListingAgent,
@@ -27,6 +29,8 @@ const all: AgentDef[] = [
   competitorPricingAgent,
   warehouseKpiAgent,
   recruitingScreeningAgent,
+  retailDataAnalysisAgent,
+  dataScientistAgent,
 ];
 
 export const registry: Record<string, AgentDef> = Object.fromEntries(
