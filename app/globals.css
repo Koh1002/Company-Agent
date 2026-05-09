@@ -17,10 +17,39 @@ body {
   color: var(--color-fg);
   font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic UI",
     "Meiryo UI", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  overscroll-behavior-y: none;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* Avoid iOS auto-zoom on focused inputs by ensuring 16px font size */
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+@media (min-width: 640px) {
+  input,
+  textarea,
+  select {
+    font-size: 14px;
+  }
+}
+
+.h-dvh {
+  height: 100dvh;
+}
+
+.safe-pb {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+.safe-pt {
+  padding-top: max(0.75rem, env(safe-area-inset-top));
 }
 
 ::-webkit-scrollbar {

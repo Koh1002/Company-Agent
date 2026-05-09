@@ -89,13 +89,13 @@ export function CredentialForm({
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-panel)] p-6 shadow-xl"
+      className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-panel)] p-4 shadow-xl sm:p-6"
     >
       <div className="mb-4 flex gap-2">
         <button
           type="button"
           onClick={() => setMode("anthropic")}
-          className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition ${
+          className={`flex h-11 flex-1 items-center justify-center gap-2 rounded-lg px-3 text-sm font-medium transition ${
             mode === "anthropic"
               ? "bg-[var(--color-accent)] text-white"
               : "bg-[var(--color-panel-2)] text-[var(--color-fg-muted)] hover:text-[var(--color-fg)]"
@@ -107,7 +107,7 @@ export function CredentialForm({
         <button
           type="button"
           onClick={() => setMode("bedrock")}
-          className={`flex flex-1 items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition ${
+          className={`flex h-11 flex-1 items-center justify-center gap-2 rounded-lg px-3 text-sm font-medium transition ${
             mode === "bedrock"
               ? "bg-[var(--color-accent)] text-white"
               : "bg-[var(--color-panel-2)] text-[var(--color-fg-muted)] hover:text-[var(--color-fg)]"
@@ -184,7 +184,7 @@ export function CredentialForm({
       <div className="mt-5 flex items-center gap-2">
         <button
           type="submit"
-          className="flex-1 rounded-lg bg-[var(--color-accent)] px-4 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
+          className="h-11 flex-1 rounded-lg bg-[var(--color-accent)] px-4 text-sm font-semibold text-white transition hover:opacity-90"
         >
           {savedMode ? "更新して保存" : "保存して開始"}
         </button>
@@ -192,9 +192,10 @@ export function CredentialForm({
           <button
             type="button"
             onClick={onSignOut}
-            className="flex items-center gap-1.5 rounded-lg border border-[var(--color-border)] px-3 py-2.5 text-sm text-[var(--color-fg-muted)] hover:text-[var(--color-fg)]"
+            className="flex h-11 items-center gap-1.5 rounded-lg border border-[var(--color-border)] px-3 text-sm text-[var(--color-fg-muted)] hover:text-[var(--color-fg)]"
           >
-            <LogOut size={14} /> サインアウト
+            <LogOut size={14} />
+            <span className="hidden sm:inline">サインアウト</span>
           </button>
         )}
       </div>
@@ -208,7 +209,7 @@ export function CredentialForm({
 }
 
 const inputCls =
-  "w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-panel-2)] px-3 py-2 text-sm text-[var(--color-fg)] outline-none focus:border-[var(--color-accent)]";
+  "w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-panel-2)] px-3 py-2.5 text-[var(--color-fg)] outline-none focus:border-[var(--color-accent)]";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
