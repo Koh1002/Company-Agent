@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useChat } from "@ai-sdk/react";
-import { DefaultChatTransport } from "ai";
 import { ArrowLeft, Send, Sparkles, Square, Wrench, X } from "lucide-react";
-import { buildHeaders, loadCredentials } from "@/lib/credentials";
+import { LocalAgentChatTransport } from "@/lib/transport";
 import type { AgentMetadata } from "@/lib/agents/metadata";
 import { CATEGORY_LABEL } from "@/lib/agents/metadata";
 import { MessageBubble } from "./MessageBubble";
@@ -16,13 +15,10 @@ export function AgentChat({ agent }: { agent: AgentMetadata }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const { messages, sendMessage, status, error, stop } = useChat({
-    transport: new DefaultChatTransport({
-      api: `/api/chat/${agent.id}`,
-      headers: () => {
-        const c = loadCredentials();
-        return c ? buildHeaders(c) : {};
-      },
-    }),
+    transport: useMemo(
+      () => new LocalAgentChatTransport(agent.id),
+      [agent.id],
+    ),
   });
 
   useEffect(() => {

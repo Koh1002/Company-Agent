@@ -32,20 +32,3 @@ export function clearCredentials(): void {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(STORAGE_KEY);
 }
-
-export function buildHeaders(creds: Credentials): Record<string, string> {
-  if (creds.mode === "anthropic") {
-    return {
-      "x-ai-provider": "anthropic",
-      "x-anthropic-api-key": creds.apiKey,
-    };
-  }
-  const headers: Record<string, string> = {
-    "x-ai-provider": "bedrock",
-    "x-aws-access-key-id": creds.accessKeyId,
-    "x-aws-secret-access-key": creds.secretAccessKey,
-    "x-aws-region": creds.region,
-  };
-  if (creds.sessionToken) headers["x-aws-session-token"] = creds.sessionToken;
-  return headers;
-}

@@ -201,8 +201,17 @@ export function CredentialForm({
       </div>
 
       <p className="mt-4 text-xs leading-relaxed text-[var(--color-fg-muted)]">
-        資格情報はこのブラウザの localStorage のみに保存されます (サーバ側には永続化されません)。
-        共有端末では使用しないでください。
+        本アプリは完全静的構成です。AI 呼び出しはこのブラウザから直接プロバイダへ送信され、
+        資格情報は localStorage のみに保存されます (サーバを一切経由しません)。共有端末では使用しないでください。
+        {mode === "bedrock" && (
+          <>
+            <br />
+            <span className="text-amber-300/90">
+              ※ AWS Bedrock はブラウザ直接呼び出しが CORS で拒否される環境があります。
+              静的ホスティングでは Anthropic API モードを推奨します。
+            </span>
+          </>
+        )}
       </p>
     </form>
   );

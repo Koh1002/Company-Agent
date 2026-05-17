@@ -1,7 +1,13 @@
 import { notFound } from "next/navigation";
-import { getAgentMetadata } from "@/lib/agents/metadata";
+import { getAgentMetadata, listAgentMetadata } from "@/lib/agents/metadata";
 import { CredentialGate } from "@/components/CredentialGate";
 import { AgentChat } from "@/components/AgentChat";
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return listAgentMetadata().map((a) => ({ agentId: a.id }));
+}
 
 export default async function AgentPage({
   params,
